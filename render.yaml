@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mi-sitio-estatico
+    name: generadores
     runtime: python
     plan: free
     autoDeploy: true
