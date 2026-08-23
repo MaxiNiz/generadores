@@ -1,0 +1,196 @@
+/* ============ PERSONALIZACIÓN BOOTSTRAP ============ */
+:root {
+    --bs-warning: #f5c518;
+    --bs-warning-rgb: 245, 197, 24;
+}
+
+/* ============ WHATSAPP FLOAT ============ */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: white;
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes pulse-whatsapp {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ============ HERO ============ */
+.hero-section {
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-img {
+    animation: float 4s ease-in-out infinite;
+    max-height: 500px;
+    filter: drop-shadow(0 20px 60px rgba(245, 197, 24, 0.2));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+}
+
+.scroll-indicator i {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ============ CATEGORÍAS ============ */
+.category-card {
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    background: #f8f9fa;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: #f5c518;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.category-card.active {
+    border-color: #f5c518;
+    background: #fff8e1;
+}
+
+/* ============ PRODUCTOS ============ */
+.hover-card {
+    transition: all 0.4s;
+}
+
+.hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+
+.hover-card:hover .product-overlay {
+    opacity: 1;
+}
+
+/* ============ CONTACTO ============ */
+.bg-dark .form-control,
+.bg-dark .form-select {
+    background-color: rgba(255,255,255,0.05) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: white !important;
+}
+
+.bg-dark .form-control:focus,
+.bg-dark .form-select:focus {
+    border-color: #f5c518 !important;
+    box-shadow: 0 0 0 0.25rem rgba(245, 197, 24, 0.25);
+}
+
+.bg-dark .form-control::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar.bg-dark {
+    background: rgba(26, 26, 46, 0.95) !important;
+    backdrop-filter: blur(20px);
+}
+
+.navbar .nav-link {
+    color: rgba(255,255,255,0.8) !important;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #f5c518 !important;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 992px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-img {
+        max-height: 300px;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .display-1 {
+        font-size: 3rem !important;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}

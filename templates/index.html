@@ -3,11 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Estático</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>GenPower - Generadores Eléctricos Premium</title>
+    
+    <!-- ============ BOOTSTRAP 5 ============ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- ============ FONT AWESOME ============ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- ============ GOOGLE FONTS ============ -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- ============ AOS ANIMATIONS ============ -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- ============ CSS PERSONALIZADO ============ -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 <body>
-    <h1>¡Hola, cliente!</h1>
-    <p>Esta es tu página estática.</p>
+    <!-- ============ WHATSAPP FLOAT ============ -->
+    <a href="https://wa.me/541112345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ============ NAVBAR BOOTSTRAP ============ -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-bolt text-warning"></i>
+                <span class="fw-bold">GenPower</span>
+                <small class="text-warning ms-2 d-none d-sm-inline" style="font-size: 0.6rem;">Energía Premium</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Generadores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categorias">Categorías</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+                <a href="#contacto" class="btn btn-warning btn-sm ms-lg-3 px-4 fw-bold">Cotizar ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center min-vh-100 py-5">
+                <div class="col-lg-6 text-white" data-aos="fade-right">
+                    <div class="badge bg-warning bg-opacity-10 text-warning mb-3 p-2 px-3">
+                        <i class="fas fa-certificate me-2"></i>Líder en el mercado desde 2010
+                    </div>
+                    <h1 class="display-1 fw-bold mb-4">
+                        Energía que <br>
+                        <span class="text-warning">impulsa</span> tu mundo
+                    </h1>
+                    <p class="lead text-white-50 mb-4" style="max-width: 500px;">
+                        Generadores eléctricos de última generación con tecnología avanzada, 
+                        máximo rendimiento y eficiencia energética.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#productos" class="btn btn-warning btn-lg px-5">
+                            <i class="fas fa-arrow-right me-2"></i>Explorar
+                        </a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg px-5">
+                            <i class="fas fa-headset me-2"></i>Asesoría
+                        </a>
+                    </div>
+                    <div class="row g-4 mt-5">
+                        <div class="col-3">
+                            <h3 class="text-warning fw-bold counter" data-target="5000">0</h3>
+                            <p class="text-white-50 small">Clientes</p>
+                        </div>
+                        <div class="col-3">
+                            <h3 class="text-warning fw-bold counter" data-target="100">0</h3>
+                            <p class="text-white-50 small">% Garantía</p>
+                        </div>
+                        <div class="col-3">
+                            <h3 class="text-warning fw-bold counter" data-target="24">0</h3>
+                            <p class="text-white-50 small">/ 7 Soporte</p>
+                        </div>
+                        <div class="col-3">
+                            <h3 class="text-warning fw-bold counter" data-target="15">0</h3>
+                            <p class="text-white-50 small">Años</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="/static/images/hero-generator.png" alt="Generador" class="img-fluid hero-img" 
+                         onerror="this.src='https://placehold.co/600x500/1a1a2e/f5c518?text=Generador+Premium'">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="text-white-50 small">Desplázate</span>
+            <i class="fas fa-chevron-down text-white-50"></i>
+        </div>
+    </section>
+
+    <!-- ============ MARCAS ============ -->
+    <section class="py-4 bg-light border-top border-bottom">
+        <div class="container">
+            <p class="text-center text-muted small text-uppercase mb-3">Confían en nosotros</p>
+            <div class="row justify-content-center align-items-center g-3">
+                <div class="col-auto"><i class="fas fa-building me-2 text-warning"></i> TechCorp</div>
+                <div class="col-auto"><i class="fas fa-industry me-2 text-warning"></i> InduPower</div>
+                <div class="col-auto"><i class="fas fa-hospital me-2 text-warning"></i> SanSalud</div>
+                <div class="col-auto"><i class="fas fa-school me-2 text-warning"></i> EduForce</div>
+                <div class="col-auto"><i class="fas fa-truck me-2 text-warning"></i> LogiTrans</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CATEGORÍAS ============ -->
+    <section id="categorias" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Categorías</span>
+                <h2 class="display-5 fw-bold mt-3">Encuentra el generador perfecto</h2>
+                <p class="text-muted">Selecciona según tu necesidad</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('hogar')">
+                        <i class="fas fa-home fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Hogar</h6>
+                        <small class="text-muted">2 modelos</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('industrial')">
+                        <i class="fas fa-industry fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Industrial</h6>
+                        <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('portátil')">
+                        <i class="fas fa-camping fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Portátil</h6>
+                        <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('tecnología')">
+                        <i class="fas fa-microchip fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Tecnología</h6>
+                        <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('ecológico')">
+                        <i class="fas fa-leaf fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Ecológico</h6>
+                        <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('emergencia')">
+                        <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold">Emergencia</h6>
+                        <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRODUCTOS ============ -->
+    <section id="productos" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Productos</span>
+                <h2 class="display-5 fw-bold mt-3">Nuestra colección premium</h2>
+                <p class="text-muted">Generadores diseñados con la más alta calidad</p>
+            </div>
+            <div class="row g-4" id="products-grid">
+                {% for generador in generadores %}
+                <div class="col-lg-4 col-md-6" data-categoria="{{ generador.categoria }}" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="position-relative">
+                            <div class="product-badge bg-warning text-dark px-3 py-1">
+                                {{ generador.categoria }}
+                            </div>
+                            <img src="/static/images/{{ generador.imagen }}" class="card-img-top" alt="{{ generador.nombre }}"
+                                 style="height: 250px; object-fit: cover;"
+                                 onerror="this.src='https://placehold.co/400x300/1a1a2e/f5c518?text=Generador'">
+                            <div class="product-overlay">
+                                <button class="btn btn-light btn-sm rounded-circle" 
+                                        hx-get="/api/generador/{{ generador.id }}"
+                                        hx-target="#modal-content"
+                                        hx-trigger="click"
+                                        onclick="abrirModal()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title fw-bold">{{ generador.nombre }}</h5>
+                                <div class="text-warning small">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted small">{{ generador.descripcion }}</p>
+                            <ul class="list-unstyled small mb-3">
+                                {% for caracteristica in generador.caracteristicas %}
+                                <li><i class="fas fa-check-circle text-warning me-2"></i>{{ caracteristica }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="h5 fw-bold text-dark">{{ generador.precio }}</span>
+                                <small class="text-muted d-block">IVA incluido</small>
+                            </div>
+                            <button class="btn btn-dark btn-sm px-4" 
+                                    hx-get="/api/generador/{{ generador.id }}"
+                                    hx-target="#modal-content"
+                                    hx-trigger="click"
+                                    onclick="abrirModal()">
+                                <i class="fas fa-info-circle me-1"></i>Detalles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section id="testimonios" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Testimonios</span>
+                <h2 class="display-5 fw-bold mt-3">Lo que dicen nuestros clientes</h2>
+                <p class="text-muted">Historias de éxito y satisfacción</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 fw-bold">Carlos Rodríguez</h6>
+                                    <div class="text-warning small">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted fst-italic">"Excelente generador, muy silencioso y potente. Superó todas mis expectativas."</p>
+                            <small class="text-muted">15 enero 2026</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 fw-bold">María González</h6>
+                                    <div class="text-warning small">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted fst-italic">"El generador industrial 5000W es una bestia. Rendimiento excepcional."</p>
+                            <small class="text-muted">3 febrero 2026</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 fw-bold">Juan Pérez</h6>
+                                    <div class="text-warning small">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted fst-italic">"Perfecto para el camping. Liviano, silencioso y carga todos los dispositivos."</p>
+                            <small class="text-muted">20 diciembre 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Contacto</span>
+                    <h2 class="display-5 fw-bold mt-3">¿Listo para <span class="text-warning">impulsar</span> tu proyecto?</h2>
+                    <p class="text-white-50">Nuestro equipo de expertos está listo para asesorarte.</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
+                                <i class="fas fa-phone text-warning"></i>
+                            </div>
+                            <div>
+                                <small class="text-white-50 d-block">Teléfono</small>
+                                <strong>+54 11 1234-5678</strong>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
+                                <i class="fas fa-envelope text-warning"></i>
+                            </div>
+                            <div>
+                                <small class="text-white-50 d-block">Email</small>
+                                <strong>info@genpower.com</strong>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
+                                <i class="fas fa-map-marker-alt text-warning"></i>
+                            </div>
+                            <div>
+                                <small class="text-white-50 d-block">Dirección</small>
+                                <strong>Buenos Aires, Argentina</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="card bg-dark border-light p-4">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control bg-dark text-white border-light" 
+                                           placeholder="Nombre completo" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control bg-dark text-white border-light" 
+                                           placeholder="Correo electrónico" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control bg-dark text-white border-light" 
+                                           placeholder="Teléfono">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select bg-dark text-white border-light">
+                                        <option value="">Selecciona un generador</option>
+                                        <option>Generador 3000W</option>
+                                        <option>Generador 5000W</option>
+                                        <option>Generador 1500W Portátil</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-dark text-white border-light" 
+                                              rows="4" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold">
+                                        <i class="fas fa-paper-plane me-2"></i>Enviar mensaje
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="py-4 bg-warning">
+        <div class="container">
+            <div class="row align-items-center g-3">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold mb-0">Suscríbete a nuestro newsletter</h5>
+                    <p class="mb-0 small">Recibe ofertas exclusivas y novedades</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico">
+                        <button class="btn btn-dark" type="button">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-dark text-white-50 py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="text-white"><i class="fas fa-bolt text-warning"></i> GenPower</h5>
+                    <p>Energía confiable para tu hogar, negocio y aventuras. Más de 15 años iluminando el camino.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="text-white">Enlaces</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#productos" class="text-decoration-none text-white-50">Productos</a></li>
+                        <li><a href="#categorias" class="text-decoration-none text-white-50">Categorías</a></li>
+                        <li><a href="#contacto" class="text-decoration-none text-white-50">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white">Información</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-white-50">Política de privacidad</a></li>
+                        <li><a href="#" class="text-decoration-none text-white-50">Términos y condiciones</a></li>
+                        <li><a href="#" class="text-decoration-none text-white-50">Garantía</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white">Síguenos</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50"><i class="fab fa-whatsapp fa-2x"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0 small">
+                © 2026 GenPower - Todos los derechos reservados. 
+                Diseñado con <i class="fas fa-heart text-danger"></i> para impulsar tu mundo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL ============ -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="modal-content">
+                <!-- Cargado por HTMX -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // ========== INICIALIZAR AOS ==========
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800
+        });
+
+        // ========== MODAL BOOTSTRAP ==========
+        const modal = new bootstrap.Modal(document.getElementById('productModal'));
+
+        function abrirModal() {
+            modal.show();
+        }
+
+        // ========== FILTRAR POR CATEGORÍA ==========
+        function filtrarPorCategoria(categoria) {
+            const cards = document.querySelectorAll('#products-grid .col-lg-4');
+            cards.forEach(card => {
+                if (card.dataset.categoria.toLowerCase() === categoria.toLowerCase()) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+            
+            document.querySelectorAll('.category-card').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.target.closest('.category-card').classList.add('active');
+        }
+
+        // ========== CONTADORES ==========
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.round(current);
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // ========== NAVBAR SCROLL ==========
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-dark', 'shadow');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('bg-dark', 'shadow');
+                nav.classList.add('bg-transparent');
+            }
+        });
+
+        // ========== EJECUTAR CONTADORES ==========
+        setTimeout(animateCounters, 500);
+    </script>
 </body>
 </html>
