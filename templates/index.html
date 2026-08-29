@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenPower - Generadores Eléctricos Premium</title>
+    <title>GenPower ⚡ Energía que impulsa tu mundo</title>
     
     <!-- ============ BOOTSTRAP 5 ============ -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,106 +17,478 @@
     <!-- ============ AOS ANIMATIONS ============ -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- ============ CSS PERSONALIZADO ============ -->
-    <link rel="stylesheet" href="/static/css/style.css">
-    
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        /* ============ VARIABLES ============ */
+        :root {
+            --primary-dark: #0a0a1a;
+            --primary-mid: #12122a;
+            --accent-gold: #f5c518;
+            --accent-gold-dim: rgba(245, 197, 24, 0.12);
+            --shadow-sm: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-md: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #f8f9fc; color: #1a1a2e; overflow-x: hidden; }
+
+        /* ============ NAVBAR ============ */
+        #mainNav {
+            background: rgba(10, 10, 26, 0.92);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        #mainNav.navbar-scrolled {
+            background: rgba(10, 10, 26, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        #mainNav .navbar-brand {
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+        #mainNav .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        #mainNav .nav-link {
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+        #mainNav .nav-link:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+        #mainNav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+        #mainNav .nav-link:hover::after { width: 60%; }
+
+        .btn-warning-custom {
+            background: linear-gradient(135deg, #f5c518, #e6b800);
+            border: none;
+            color: #0a0a1a;
+            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(245, 197, 24, 0.3);
+        }
+        .btn-warning-custom:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(245, 197, 24, 0.4);
+            color: #0a0a1a;
+        }
+        .btn-outline-light-custom {
+            border: 2px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            padding: 10px 28px;
+            transition: var(--transition);
+            color: #fff;
+            background: transparent;
+        }
+        .btn-outline-light-custom:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        /* ============ HERO ============ */
+        .hero-section {
+            background: linear-gradient(165deg, #0a0a1a 0%, #12122a 40%, #1a1a3e 70%, #0d0d20 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(245, 197, 24, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 197, 24, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section .container { position: relative; z-index: 2; }
+
+        .badge-hero {
+            background: rgba(245, 197, 24, 0.12);
+            color: #f5c518;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(245, 197, 24, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(245, 197, 24, 0.15));
+            animation: floatHero 6s ease-in-out infinite;
+            border-radius: 20px;
+        }
+        @keyframes floatHero {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            animation: bounceDown 2s ease-in-out infinite;
+        }
+        @keyframes bounceDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        .scroll-indicator i { display: block; font-size: 1.2rem; opacity: 0.5; }
+
+        .counter {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5c518, #e6b800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ============ CATEGORÍAS ============ */
+        .category-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-sm);
+            padding: 20px 15px;
+        }
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-gold);
+        }
+        .category-card.active {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold-dim);
+        }
+        .category-card i { transition: var(--transition); }
+        .category-card:hover i { transform: scale(1.15); }
+
+        /* ============ PRODUCTOS ============ */
+        .product-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+            border: none;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+        .product-card .card-img-top {
+            height: 240px;
+            object-fit: cover;
+            background: #f0f0f0;
+            transition: var(--transition);
+        }
+        .product-card:hover .card-img-top { transform: scale(1.03); }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            z-index: 2;
+            padding: 6px 14px;
+        }
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 26, 0.4);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-card:hover .product-overlay { opacity: 1; }
+        .product-overlay .btn-light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.8);
+            transition: var(--transition);
+        }
+        .product-card:hover .product-overlay .btn-light { transform: scale(1); }
+
+        .product-rating {
+            color: #f5c518;
+            font-size: 0.85rem;
+        }
+
+        /* ============ TESTIMONIOS ============ */
+        .testimonial-card {
+            background: #fff;
+            padding: 28px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .testimonial-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5c518, #e6b800);
+            color: #0a0a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ============ WHATSAPP FLOAT ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 30px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ============ MODAL ============ */
+        .modal-content {
+            border-radius: var(--border-radius);
+            border: none;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal-header { border-bottom: 1px solid rgba(0,0,0,0.06); padding: 24px 28px; }
+        .modal-body { padding: 28px; }
+        .modal-footer { border-top: 1px solid rgba(0,0,0,0.06); padding: 20px 28px; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 991.98px) {
+            #mainNav .navbar-collapse {
+                background: rgba(10, 10, 26, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: var(--border-radius);
+                margin-top: 12px;
+                border: 1px solid rgba(255,255,255,0.06);
+            }
+            .hero-section .display-1 { font-size: 3.2rem; }
+            .counter { font-size: 2rem; }
+        }
+        @media (max-width: 767.98px) {
+            .hero-section .display-1 { font-size: 2.5rem; }
+            .hero-section .btn-lg { font-size: 0.9rem; padding: 10px 20px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+        }
+
+        /* ============ UTILITY ============ */
+        .bg-opacity-10 { --bs-bg-opacity: 0.1; }
+        .text-gradient {
+            background: linear-gradient(135deg, #f5c518, #e6b800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.5s ease; }
+    </style>
 </head>
 <body>
     <!-- ============ WHATSAPP FLOAT ============ -->
-    <a href="https://wa.me/541112345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5491112345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ============ NAVBAR BOOTSTRAP ============ -->
+    <!-- ============ NAVBAR ============ -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-bolt text-warning"></i>
+                <!-- LOGO - Reemplaza la URL con tu logo -->
+                <img src="/static/images/Logo eléctrico el tata.PNG" alt="GenPower" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span style="display:none;"><i class="fas fa-bolt text-warning"></i></span>
                 <span class="fw-bold">GenPower</span>
-                <small class="text-warning ms-2 d-none d-sm-inline" style="font-size: 0.6rem;">Energía Premium</small>
+                <small class="text-warning ms-2 d-none d-sm-inline" style="font-size: 0.6rem; font-weight: 600;">Energía Premium</small>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#productos">Generadores</a></li>
                     <li class="nav-item"><a class="nav-link" href="#categorias">Categorías</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                 </ul>
-                <a href="#contacto" class="btn btn-warning btn-sm ms-lg-3 px-4 fw-bold">Cotizar ahora</a>
+                <a href="#contacto" class="btn btn-warning-custom btn-sm ms-lg-3 px-4">
+                    <i class="fas fa-arrow-right me-2 d-none d-md-inline"></i>Cotizar
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- ============ HERO ============ -->
     <section id="inicio" class="hero-section d-flex align-items-center">
-        <div class="container">
+        <div class="container position-relative">
             <div class="row align-items-center min-vh-100 py-5">
-                <div class="col-lg-6 text-white" data-aos="fade-right">
-                    <div class="badge bg-warning bg-opacity-10 text-warning mb-3 p-2 px-3">
-                        <i class="fas fa-certificate me-2"></i>Líder en el mercado desde 2010
+                <div class="col-lg-6 text-white" data-aos="fade-right" data-aos-duration="800">
+                    <div class="badge-hero mb-4 d-inline-flex align-items-center">
+                        <i class="fas fa-certificate me-2"></i>
+                        Líder en el mercado desde 2010
                     </div>
                     <h1 class="display-1 fw-bold mb-4">
                         Energía que <br>
                         <span class="text-warning">impulsa</span> tu mundo
                     </h1>
-                    <p class="lead text-white-50 mb-4" style="max-width: 500px;">
+                    <p class="lead text-white-50 mb-4" style="max-width: 520px;">
                         Generadores eléctricos de última generación con tecnología avanzada, 
                         máximo rendimiento y eficiencia energética.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
-                        <a href="#productos" class="btn btn-warning btn-lg px-5">
+                        <a href="#productos" class="btn btn-warning-custom btn-lg px-5">
                             <i class="fas fa-arrow-right me-2"></i>Explorar
                         </a>
-                        <a href="#contacto" class="btn btn-outline-light btn-lg px-5">
+                        <a href="#contacto" class="btn btn-outline-light-custom btn-lg px-5">
                             <i class="fas fa-headset me-2"></i>Asesoría
                         </a>
                     </div>
+                    
+                    <!-- STATS -->
                     <div class="row g-4 mt-5">
-                        <div class="col-3">
-                            <h3 class="text-warning fw-bold counter" data-target="5000">0</h3>
-                            <p class="text-white-50 small">Clientes</p>
+                        <div class="col-3" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="5000">0</h3>
+                            <p class="text-white-50 small mb-0">Clientes</p>
                         </div>
-                        <div class="col-3">
-                            <h3 class="text-warning fw-bold counter" data-target="100">0</h3>
-                            <p class="text-white-50 small">% Garantía</p>
+                        <div class="col-3" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="100">0</h3>
+                            <p class="text-white-50 small mb-0">% Garantía</p>
                         </div>
-                        <div class="col-3">
-                            <h3 class="text-warning fw-bold counter" data-target="24">0</h3>
-                            <p class="text-white-50 small">/ 7 Soporte</p>
+                        <div class="col-3" data-aos="fade-up" data-aos-delay="400">
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="24">0</h3>
+                            <p class="text-white-50 small mb-0">/7 Soporte</p>
                         </div>
-                        <div class="col-3">
-                            <h3 class="text-warning fw-bold counter" data-target="15">0</h3>
-                            <p class="text-white-50 small">Años</p>
+                        <div class="col-3" data-aos="fade-up" data-aos-delay="500">
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="15">0</h3>
+                            <p class="text-white-50 small mb-0">Años</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center" data-aos="fade-left">
-                    <img src="/static/images/hero-generator.png" alt="Generador" class="img-fluid hero-img" 
+                <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="400">
+                    <!-- IMAGEN HERO - Reemplaza con tu imagen -->
+                    <img src="/static/images/Logo eléctrico el tata.PNG" alt="Generador Premium" class="hero-img" 
                          onerror="this.src='https://placehold.co/600x500/1a1a2e/f5c518?text=Generador+Premium'">
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <span class="text-white-50 small">Desplázate</span>
+            <span class="text-white-50 small d-block">Desplázate</span>
             <i class="fas fa-chevron-down text-white-50"></i>
         </div>
     </section>
 
     <!-- ============ MARCAS ============ -->
-    <section class="py-4 bg-light border-top border-bottom">
+    <section class="py-4 bg-white border-top border-bottom">
         <div class="container">
-            <p class="text-center text-muted small text-uppercase mb-3">Confían en nosotros</p>
-            <div class="row justify-content-center align-items-center g-3">
-                <div class="col-auto"><i class="fas fa-building me-2 text-warning"></i> TechCorp</div>
-                <div class="col-auto"><i class="fas fa-industry me-2 text-warning"></i> InduPower</div>
-                <div class="col-auto"><i class="fas fa-hospital me-2 text-warning"></i> SanSalud</div>
-                <div class="col-auto"><i class="fas fa-school me-2 text-warning"></i> EduForce</div>
-                <div class="col-auto"><i class="fas fa-truck me-2 text-warning"></i> LogiTrans</div>
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-auto">
+                    <p class="text-muted small text-uppercase mb-0 fw-bold">Confían en nosotros</p>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-building me-2 text-warning"></i><span class="fw-semibold">TechCorp</span>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-industry me-2 text-warning"></i><span class="fw-semibold">InduPower</span>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-hospital me-2 text-warning"></i><span class="fw-semibold">SanSalud</span>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-school me-2 text-warning"></i><span class="fw-semibold">EduForce</span>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-truck me-2 text-warning"></i><span class="fw-semibold">LogiTrans</span>
+                </div>
             </div>
         </div>
     </section>
@@ -125,51 +497,60 @@
     <section id="categorias" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Categorías</span>
-                <h2 class="display-5 fw-bold mt-3">Encuentra el generador perfecto</h2>
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
+                    <i class="fas fa-tags me-1"></i>Categorías
+                </span>
+                <h2 class="display-5 fw-bold mt-3">Encuentra el generador <span class="text-warning">perfecto</span></h2>
                 <p class="text-muted">Selecciona según tu necesidad</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center" id="categoryContainer">
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('hogar')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('hogar', this)">
                         <i class="fas fa-home fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Hogar</h6>
-                        <small class="text-muted">2 modelos</small>
+                        <h6 class="fw-bold mb-0">Hogar</h6>
+                        <small class="text-muted">1 modelo</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('industrial')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('industrial', this)">
                         <i class="fas fa-industry fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Industrial</h6>
+                        <h6 class="fw-bold mb-0">Industrial</h6>
                         <small class="text-muted">1 modelo</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('portátil')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('portátil', this)">
                         <i class="fas fa-camping fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Portátil</h6>
+                        <h6 class="fw-bold mb-0">Portátil</h6>
                         <small class="text-muted">1 modelo</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('tecnología')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('tecnología', this)">
                         <i class="fas fa-microchip fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Tecnología</h6>
+                        <h6 class="fw-bold mb-0">Tecnología</h6>
                         <small class="text-muted">1 modelo</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('ecológico')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('ecológico', this)">
                         <i class="fas fa-leaf fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Ecológico</h6>
+                        <h6 class="fw-bold mb-0">Ecológico</h6>
                         <small class="text-muted">1 modelo</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="category-card text-center p-3" onclick="filtrarPorCategoria('emergencia')">
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('emergencia', this)">
                         <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold">Emergencia</h6>
+                        <h6 class="fw-bold mb-0">Emergencia</h6>
                         <small class="text-muted">1 modelo</small>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="700">
+                    <div class="category-card text-center active" onclick="filtrarPorCategoria('todos', this)">
+                        <i class="fas fa-th-large fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold mb-0">Todos</h6>
+                        <small class="text-muted">{{ generadores|length }} modelos</small>
                     </div>
                 </div>
             </div>
@@ -180,27 +561,23 @@
     <section id="productos" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Productos</span>
-                <h2 class="display-5 fw-bold mt-3">Nuestra colección premium</h2>
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
+                    <i class="fas fa-box me-1"></i>Productos
+                </span>
+                <h2 class="display-5 fw-bold mt-3">Nuestra colección <span class="text-warning">premium</span></h2>
                 <p class="text-muted">Generadores diseñados con la más alta calidad</p>
             </div>
-            <div class="row g-4" id="products-grid">
+            <div class="row g-4" id="productsGrid">
                 {% for generador in generadores %}
-                <div class="col-lg-4 col-md-6" data-categoria="{{ generador.categoria }}" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
-                    <div class="card h-100 border-0 shadow-sm hover-card">
+                <div class="col-lg-4 col-md-6 product-item" data-categoria="{{ generador.categoria }}" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="card product-card">
                         <div class="position-relative">
-                            <div class="product-badge bg-warning text-dark px-3 py-1">
-                                {{ generador.categoria }}
-                            </div>
-                            <img src="/static/images/{{ generador.imagen }}" class="card-img-top" alt="{{ generador.nombre }}"
-                                 style="height: 250px; object-fit: cover;"
-                                 onerror="this.src='https://placehold.co/400x300/1a1a2e/f5c518?text=Generador'">
+                            <span class="product-badge bg-warning text-dark">{{ generador.categoria|capitalize }}</span>
+                            <img src="/static/images/generador1.jpg" 
+                                 class="card-img-top" alt="{{ generador.nombre }}"
+                                 onerror="this.src='https://placehold.co/400x300/1a1a2e/f5c518?text={{ generador.nombre }}'">
                             <div class="product-overlay">
-                                <button class="btn btn-light btn-sm rounded-circle" 
-                                        hx-get="/api/generador/{{ generador.id }}"
-                                        hx-target="#modal-content"
-                                        hx-trigger="click"
-                                        onclick="abrirModal()">
+                                <button class="btn btn-light btn-sm rounded-circle" onclick="verDetalle({{ generador.id }})">
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </div>
@@ -208,18 +585,14 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="card-title fw-bold">{{ generador.nombre }}</h5>
-                                <div class="text-warning small">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i> {{ generador.rating }}
+                                </span>
                             </div>
                             <p class="card-text text-muted small">{{ generador.descripcion }}</p>
                             <ul class="list-unstyled small mb-3">
-                                {% for caracteristica in generador.caracteristicas %}
-                                <li><i class="fas fa-check-circle text-warning me-2"></i>{{ caracteristica }}</li>
+                                {% for c in generador.caracteristicas[:3] %}
+                                <li><i class="fas fa-check-circle text-warning me-2"></i>{{ c }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -228,11 +601,7 @@
                                 <span class="h5 fw-bold text-dark">{{ generador.precio }}</span>
                                 <small class="text-muted d-block">IVA incluido</small>
                             </div>
-                            <button class="btn btn-dark btn-sm px-4" 
-                                    hx-get="/api/generador/{{ generador.id }}"
-                                    hx-target="#modal-content"
-                                    hx-trigger="click"
-                                    onclick="abrirModal()">
+                            <button class="btn btn-dark btn-sm px-4" onclick="verDetalle({{ generador.id }})">
                                 <i class="fas fa-info-circle me-1"></i>Detalles
                             </button>
                         </div>
@@ -247,81 +616,62 @@
     <section id="testimonios" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Testimonios</span>
-                <h2 class="display-5 fw-bold mt-3">Lo que dicen nuestros clientes</h2>
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
+                    <i class="fas fa-star me-1"></i>Testimonios
+                </span>
+                <h2 class="display-5 fw-bold mt-3">Lo que dicen <span class="text-warning">nuestros clientes</span></h2>
                 <p class="text-muted">Historias de éxito y satisfacción</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
-                                     style="width: 50px; height: 50px;">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 fw-bold">Carlos Rodríguez</h6>
-                                    <div class="text-warning small">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar">CR</div>
+                            <div class="ms-3">
+                                <h6 class="mb-0 fw-bold">Carlos Rodríguez</h6>
+                                <div class="text-warning small">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="card-text text-muted fst-italic">"Excelente generador, muy silencioso y potente. Superó todas mis expectativas."</p>
-                            <small class="text-muted">15 enero 2026</small>
                         </div>
+                        <p class="card-text text-muted fst-italic mb-2">"Excelente generador, muy silencioso y potente. Superó todas mis expectativas."</p>
+                        <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>15 enero 2026</small>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
-                                     style="width: 50px; height: 50px;">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 fw-bold">María González</h6>
-                                    <div class="text-warning small">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar">MG</div>
+                            <div class="ms-3">
+                                <h6 class="mb-0 fw-bold">María González</h6>
+                                <div class="text-warning small">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="card-text text-muted fst-italic">"El generador industrial 5000W es una bestia. Rendimiento excepcional."</p>
-                            <small class="text-muted">3 febrero 2026</small>
                         </div>
+                        <p class="card-text text-muted fst-italic mb-2">"El generador industrial 5000W es una bestia. Rendimiento excepcional."</p>
+                        <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>3 febrero 2026</small>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" 
-                                     style="width: 50px; height: 50px;">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 fw-bold">Juan Pérez</h6>
-                                    <div class="text-warning small">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar">JL</div>
+                            <div class="ms-3">
+                                <h6 class="mb-0 fw-bold">Juan López</h6>
+                                <div class="text-warning small">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="card-text text-muted fst-italic">"Perfecto para el camping. Liviano, silencioso y carga todos los dispositivos."</p>
-                            <small class="text-muted">20 diciembre 2025</small>
                         </div>
+                        <p class="card-text text-muted fst-italic mb-2">"La atención al cliente es increíble. Me ayudaron a elegir el generador perfecto."</p>
+                        <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>20 febrero 2026</small>
                     </div>
                 </div>
             </div>
@@ -329,104 +679,22 @@
     </section>
 
     <!-- ============ CONTACTO ============ -->
-    <section id="contacto" class="py-5 bg-dark text-white">
+    <section id="contacto" class="py-5" style="background: linear-gradient(165deg, #0a0a1a, #12122a);">
         <div class="container">
-            <div class="row g-5 align-items-start">
-                <div class="col-lg-5" data-aos="fade-right">
-                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">Contacto</span>
-                    <h2 class="display-5 fw-bold mt-3">¿Listo para <span class="text-warning">impulsar</span> tu proyecto?</h2>
-                    <p class="text-white-50">Nuestro equipo de expertos está listo para asesorarte.</p>
-                    <div class="mt-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
-                                <i class="fas fa-phone text-warning"></i>
-                            </div>
-                            <div>
-                                <small class="text-white-50 d-block">Teléfono</small>
-                                <strong>+54 11 1234-5678</strong>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
-                                <i class="fas fa-envelope text-warning"></i>
-                            </div>
-                            <div>
-                                <small class="text-white-50 d-block">Email</small>
-                                <strong>info@genpower.com</strong>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
-                                <i class="fas fa-map-marker-alt text-warning"></i>
-                            </div>
-                            <div>
-                                <small class="text-white-50 d-block">Dirección</small>
-                                <strong>Buenos Aires, Argentina</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-7" data-aos="fade-left">
-                    <div class="card bg-dark border-light p-4">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control bg-dark text-white border-light" 
-                                           placeholder="Nombre completo" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control bg-dark text-white border-light" 
-                                           placeholder="Correo electrónico" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="tel" class="form-control bg-dark text-white border-light" 
-                                           placeholder="Teléfono">
-                                </div>
-                                <div class="col-md-6">
-                                    <select class="form-select bg-dark text-white border-light">
-                                        <option value="">Selecciona un generador</option>
-                                        <option>Generador 3000W</option>
-                                        <option>Generador 5000W</option>
-                                        <option>Generador 1500W Portátil</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-dark text-white border-light" 
-                                              rows="4" placeholder="Cuéntanos sobre tu proyecto"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold">
-                                        <i class="fas fa-paper-plane me-2"></i>Enviar mensaje
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ NEWSLETTER ============ -->
-    <section class="py-4 bg-warning">
-        <div class="container">
-            <div class="row align-items-center g-3">
-                <div class="col-lg-6">
-                    <h5 class="fw-bold mb-0">Suscríbete a nuestro newsletter</h5>
-                    <p class="mb-0 small">Recibe ofertas exclusivas y novedades</p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Tu correo electrónico">
-                        <button class="btn btn-dark" type="button">
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center text-white" data-aos="fade-up">
+                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold mb-3">
+                        <i class="fas fa-headset me-1"></i>Contacto
+                    </span>
+                    <h2 class="display-5 fw-bold mb-3">¿Listo para <span class="text-warning">impulsar</span> tu proyecto?</h2>
+                    <p class="text-white-50 mb-4">Habla con nuestros expertos y encuentra la solución energética perfecta para ti.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-success btn-lg px-5">
+                            <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                        </a>
+                        <a href="mailto:info@genpower.com" class="btn btn-outline-light btn-lg px-5">
+                            <i class="fas fa-envelope me-2"></i>Email
+                        </a>
                     </div>
                 </div>
             </div>
@@ -434,52 +702,48 @@
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-dark text-white-50 py-5">
+    <footer class="py-4" style="background: #050510;">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="text-white"><i class="fas fa-bolt text-warning"></i> GenPower</h5>
-                    <p>Energía confiable para tu hogar, negocio y aventuras. Más de 15 años iluminando el camino.</p>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <a class="navbar-brand" href="#">
+                        <i class="fas fa-bolt text-warning"></i>
+                        <span class="fw-bold text-white">GenPower</span>
+                    </a>
+                    <p class="text-muted small mb-0 mt-2">© {{ año }} GenPower. Todos los derechos reservados.</p>
                 </div>
-                <div class="col-lg-2">
-                    <h6 class="text-white">Enlaces</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#productos" class="text-decoration-none text-white-50">Productos</a></li>
-                        <li><a href="#categorias" class="text-decoration-none text-white-50">Categorías</a></li>
-                        <li><a href="#contacto" class="text-decoration-none text-white-50">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h6 class="text-white">Información</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-white-50">Política de privacidad</a></li>
-                        <li><a href="#" class="text-decoration-none text-white-50">Términos y condiciones</a></li>
-                        <li><a href="#" class="text-decoration-none text-white-50">Garantía</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h6 class="text-white">Síguenos</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-white-50"><i class="fab fa-whatsapp fa-2x"></i></a>
-                        <a href="#" class="text-white-50"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#" class="text-white-50"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#" class="text-white-50"><i class="fab fa-youtube fa-2x"></i></a>
-                    </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-muted me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-muted me-3"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-muted"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
-            <hr class="border-light">
-            <p class="text-center mb-0 small">
-                © 2026 GenPower - Todos los derechos reservados. 
-                Diseñado con <i class="fas fa-heart text-danger"></i> para impulsar tu mundo.
-            </p>
         </div>
     </footer>
 
     <!-- ============ MODAL ============ -->
-    <div class="modal fade" id="productModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" id="modal-content">
-                <!-- Cargado por HTMX -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-warning" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="text-muted mt-3">Cargando información...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning-custom fw-bold" onclick="window.location.href='#contacto'">
+                        <i class="fas fa-arrow-right me-2"></i>Solicitar Cotización
+                    </button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -487,75 +751,127 @@
     <!-- ============ SCRIPTS ============ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        // ========== INICIALIZAR AOS ==========
-        AOS.init({
-            once: true,
-            offset: 100,
-            duration: 800
+        // ============ AOS ============
+        AOS.init({ duration: 600, once: true, offset: 50 });
+
+        // ============ NAVBAR SCROLL ============
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('mainNav');
+            window.addEventListener('scroll', function() {
+                navbar.classList.toggle('navbar-scrolled', window.scrollY > 50);
+            });
         });
 
-        // ========== MODAL BOOTSTRAP ==========
-        const modal = new bootstrap.Modal(document.getElementById('productModal'));
-
-        function abrirModal() {
-            modal.show();
+        // ============ COUNTER ANIMATION ============
+        function animateCounters() {
+            document.querySelectorAll('.counter').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const step = Math.max(1, Math.floor(target / 60));
+                const increment = () => {
+                    current += step;
+                    if (current >= target) { counter.textContent = target; return; }
+                    counter.textContent = current;
+                    requestAnimationFrame(() => setTimeout(increment, 30));
+                };
+                increment();
+            });
         }
 
-        // ========== FILTRAR POR CATEGORÍA ==========
-        function filtrarPorCategoria(categoria) {
-            const cards = document.querySelectorAll('#products-grid .col-lg-4');
-            cards.forEach(card => {
-                if (card.dataset.categoria.toLowerCase() === categoria.toLowerCase()) {
-                    card.style.display = 'block';
+        // ============ FILTRAR ============
+        function filtrarPorCategoria(categoria, element) {
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            if (element) element.classList.add('active');
+            
+            document.querySelectorAll('#productsGrid .product-item').forEach(product => {
+                const cat = product.getAttribute('data-categoria');
+                if (cat === categoria || categoria === 'todos') {
+                    product.style.display = 'block';
+                    product.style.animation = 'fadeIn 0.5s ease';
                 } else {
-                    card.style.display = 'none';
+                    product.style.display = 'none';
                 }
             });
-            
-            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
-            
-            document.querySelectorAll('.category-card').forEach(el => {
-                el.classList.remove('active');
-            });
-            event.target.closest('.category-card').classList.add('active');
         }
 
-        // ========== CONTADORES ==========
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.dataset.target);
-                const increment = target / 50;
-                let current = 0;
-                
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        counter.textContent = Math.round(current);
-                        setTimeout(updateCounter, 30);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
-                updateCounter();
-            });
-        }
+        // ============ MODAL ============
+        let modalInstance = null;
 
-        // ========== NAVBAR SCROLL ==========
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('mainNav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-dark', 'shadow');
-                nav.classList.remove('bg-transparent');
-            } else {
-                nav.classList.remove('bg-dark', 'shadow');
-                nav.classList.add('bg-transparent');
+        function verDetalle(id) {
+            if (!modalInstance) {
+                modalInstance = new bootstrap.Modal(document.getElementById('productModal'));
             }
-        });
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <p class="text-muted mt-3">Cargando información...</p>
+                </div>
+            `;
+            
+            modalInstance.show();
+            
+            fetch(`/api/generador/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        modalContent.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                        return;
+                    }
+                    
+                    modalContent.innerHTML = `
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="bg-light rounded p-3 text-center">
+                                    <img src="/static/images/${data.imagen || 'generator-placeholder.jpg'}" 
+                                         class="img-fluid rounded" alt="${data.nombre}"
+                                         onerror="this.src='https://placehold.co/300x300/1a1a2e/f5c518?text=${data.nombre}'">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h4 class="fw-bold">${data.nombre}</h4>
+                                <p class="text-muted">${data.descripcion}</p>
+                                <div class="mb-3">
+                                    <span class="h3 text-warning fw-bold">${data.precio}</span>
+                                    <small class="text-muted d-block">IVA incluido</small>
+                                </div>
+                                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 mb-3">
+                                    <i class="fas fa-tag me-1"></i>${data.categoria}
+                                </span>
+                                <ul class="list-unstyled">
+                                    ${data.caracteristicas.map(c => 
+                                        `<li><i class="fas fa-check-circle text-warning me-2"></i>${c}</li>`
+                                    ).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    modalContent.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+                });
+        }
 
-        // ========== EJECUTAR CONTADORES ==========
-        setTimeout(animateCounters, 500);
+        // ============ INICIALIZAR ============
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contadores
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.hero-section .row .col-lg-6:first-child');
+            if (statsSection) observer.observe(statsSection);
+        });
     </script>
 </body>
 </html>
