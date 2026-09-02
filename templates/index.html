@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenPower ⚡ Energía que impulsa tu mundo</title>
+    <title>EL TATA ⚡ Emergencias Eléctricas - Alquiler de Grupos Electrógenos</title>
     
     <!-- ============ BOOTSTRAP 5 ============ -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,7 @@
             --primary-dark: #0a0a1a;
             --primary-mid: #12122a;
             --accent-gold: #f5c518;
+            --accent-red: #dc3545;
             --accent-gold-dim: rgba(245, 197, 24, 0.12);
             --shadow-sm: 0 4px 20px rgba(0,0,0,0.06);
             --shadow-md: 0 10px 40px rgba(0,0,0,0.08);
@@ -49,12 +50,23 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.3);
         }
         #mainNav .navbar-brand {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             letter-spacing: -0.5px;
         }
         #mainNav .navbar-brand img {
-            height: 40px;
+            height: 45px;
             margin-right: 10px;
+        }
+        #mainNav .navbar-brand .brand-text {
+            color: #fff;
+            font-weight: 700;
+        }
+        #mainNav .navbar-brand .brand-sub {
+            color: var(--accent-gold);
+            font-size: 0.6rem;
+            font-weight: 600;
+            display: block;
+            letter-spacing: 1px;
         }
         #mainNav .nav-link {
             color: rgba(255,255,255,0.7);
@@ -98,6 +110,21 @@
             box-shadow: 0 8px 30px rgba(245, 197, 24, 0.4);
             color: #0a0a1a;
         }
+        .btn-danger-custom {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+        }
+        .btn-danger-custom:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(220, 53, 69, 0.4);
+            color: #fff;
+        }
         .btn-outline-light-custom {
             border: 2px solid rgba(255,255,255,0.25);
             border-radius: 50px;
@@ -132,34 +159,23 @@
             border-radius: 50%;
             pointer-events: none;
         }
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(245, 197, 24, 0.04) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
         .hero-section .container { position: relative; z-index: 2; }
 
         .badge-hero {
-            background: rgba(245, 197, 24, 0.12);
-            color: #f5c518;
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff6b7a;
             padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(245, 197, 24, 0.15);
+            border: 1px solid rgba(220, 53, 69, 0.2);
             backdrop-filter: blur(10px);
         }
         .hero-img {
             max-width: 100%;
             height: auto;
-            filter: drop-shadow(0 20px 60px rgba(245, 197, 24, 0.15));
+            filter: drop-shadow(0 20px 60px rgba(245, 197, 24, 0.12));
             animation: floatHero 6s ease-in-out infinite;
             border-radius: 20px;
         }
@@ -179,7 +195,6 @@
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(10px); }
         }
-        .scroll-indicator i { display: block; font-size: 1.2rem; opacity: 0.5; }
 
         .counter {
             font-size: 2.8rem;
@@ -273,9 +288,26 @@
         }
         .product-card:hover .product-overlay .btn-light { transform: scale(1); }
 
-        .product-rating {
-            color: #f5c518;
-            font-size: 0.85rem;
+        .product-rating { color: #f5c518; font-size: 0.85rem; }
+
+        /* ============ SERVICIOS ============ */
+        .service-card {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
         }
 
         /* ============ TESTIMONIOS ============ */
@@ -335,9 +367,6 @@
             border: none;
             box-shadow: var(--shadow-lg);
         }
-        .modal-header { border-bottom: 1px solid rgba(0,0,0,0.06); padding: 24px 28px; }
-        .modal-body { padding: 28px; }
-        .modal-footer { border-top: 1px solid rgba(0,0,0,0.06); padding: 20px 28px; }
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 991.98px) {
@@ -358,7 +387,12 @@
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
         }
 
-        /* ============ UTILITY ============ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.5s ease; }
+
         .bg-opacity-10 { --bs-bg-opacity: 0.1; }
         .text-gradient {
             background: linear-gradient(135deg, #f5c518, #e6b800);
@@ -366,16 +400,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in { animation: fadeIn 0.5s ease; }
     </style>
 </head>
 <body>
     <!-- ============ WHATSAPP FLOAT ============ -->
-    <a href="https://wa.me/5491112345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/541153392457" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -383,12 +412,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <!-- LOGO - Reemplaza la URL con tu logo -->
-                <img src="/static/images/Logo eléctrico el tata.PNG" alt="GenPower" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <img src="/static/images/Logo eléctrico el tata2.png" alt="EL TATA" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                 <span style="display:none;"><i class="fas fa-bolt text-warning"></i></span>
-                <span class="fw-bold">GenPower</span>
-                <small class="text-warning ms-2 d-none d-sm-inline" style="font-size: 0.6rem; font-weight: 600;">Energía Premium</small>
+                
+                <small class="brand-text">⚡ Emergencias Eléctricas El Tata</small>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -397,12 +425,12 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#productos">Generadores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#categorias">Categorías</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                 </ul>
-                <a href="#contacto" class="btn btn-warning-custom btn-sm ms-lg-3 px-4">
-                    <i class="fas fa-arrow-right me-2 d-none d-md-inline"></i>Cotizar
+                <a href="#contacto" class="btn btn-danger-custom btn-sm ms-lg-3 px-4">
+                    <i class="fas fa-phone me-2 d-none d-md-inline"></i>Emergencia 24/7
                 </a>
             </div>
         </div>
@@ -414,50 +442,49 @@
             <div class="row align-items-center min-vh-100 py-5">
                 <div class="col-lg-6 text-white" data-aos="fade-right" data-aos-duration="800">
                     <div class="badge-hero mb-4 d-inline-flex align-items-center">
-                        <i class="fas fa-certificate me-2"></i>
-                        Líder en el mercado desde 2010
+                        <i class="fas fa-bolt me-2"></i>
+                        Servicio 24/7 - Emergencias Eléctricas
                     </div>
                     <h1 class="display-1 fw-bold mb-4">
-                        Energía que <br>
-                        <span class="text-warning">impulsa</span> tu mundo
+                        Energía <span class="text-warning">inmediata</span><br>
+                        cuando más la <span class="text-warning">necesitás</span>
                     </h1>
                     <p class="lead text-white-50 mb-4" style="max-width: 520px;">
-                        Generadores eléctricos de última generación con tecnología avanzada, 
-                        máximo rendimiento y eficiencia energética.
+                        Alquiler de grupos electrógenos trifásicos de 80 a 180 kVA. 
+                        Logística propia, guardia 24/7 y asistencia técnica permanente.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="#productos" class="btn btn-warning-custom btn-lg px-5">
-                            <i class="fas fa-arrow-right me-2"></i>Explorar
+                            <i class="fas fa-arrow-right me-2"></i>Ver Equipos
                         </a>
                         <a href="#contacto" class="btn btn-outline-light-custom btn-lg px-5">
-                            <i class="fas fa-headset me-2"></i>Asesoría
+                            <i class="fas fa-headset me-2"></i>Emergencia
                         </a>
                     </div>
                     
                     <!-- STATS -->
                     <div class="row g-4 mt-5">
                         <div class="col-3" data-aos="fade-up" data-aos-delay="200">
-                            <h3 class="fw-bold mb-0 display-5 counter" data-target="5000">0</h3>
-                            <p class="text-white-50 small mb-0">Clientes</p>
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="180">0</h3>
+                            <p class="text-white-50 small mb-0">kVA Máximos</p>
                         </div>
                         <div class="col-3" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="fw-bold mb-0 display-5 counter" data-target="100">0</h3>
-                            <p class="text-white-50 small mb-0">% Garantía</p>
-                        </div>
-                        <div class="col-3" data-aos="fade-up" data-aos-delay="400">
                             <h3 class="fw-bold mb-0 display-5 counter" data-target="24">0</h3>
                             <p class="text-white-50 small mb-0">/7 Soporte</p>
                         </div>
+                        <div class="col-3" data-aos="fade-up" data-aos-delay="400">
+                            <h3 class="fw-bold mb-0 display-5 counter" data-target="100">0</h3>
+                            <p class="text-white-50 small mb-0">% Confiabilidad</p>
+                        </div>
                         <div class="col-3" data-aos="fade-up" data-aos-delay="500">
                             <h3 class="fw-bold mb-0 display-5 counter" data-target="15">0</h3>
-                            <p class="text-white-50 small mb-0">Años</p>
+                            <p class="text-white-50 small mb-0">Años de Experiencia</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="400">
-                    <!-- IMAGEN HERO - Reemplaza con tu imagen -->
-                    <img src="/static/images/Logo eléctrico el tata.PNG" alt="Generador Premium" class="hero-img" 
-                         onerror="this.src='https://placehold.co/600x500/1a1a2e/f5c518?text=Generador+Premium'">
+                    <img src="/static/images/Logo eléctrico el tata.PNG" alt="Grupos Electrógenos EL TATA" class="hero-img" 
+                         onerror="this.src='https://placehold.co/600x500/1a1a2e/f5c518?text=EL+TATA'">
                 </div>
             </div>
         </div>
@@ -475,19 +502,19 @@
                     <p class="text-muted small text-uppercase mb-0 fw-bold">Confían en nosotros</p>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-building me-2 text-warning"></i><span class="fw-semibold">TechCorp</span>
+                    <i class="fas fa-building me-2 text-warning"></i><span class="fw-semibold">Industrias</span>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-industry me-2 text-warning"></i><span class="fw-semibold">InduPower</span>
+                    <i class="fas fa-store me-2 text-warning"></i><span class="fw-semibold">Supermercados</span>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-hospital me-2 text-warning"></i><span class="fw-semibold">SanSalud</span>
+                    <i class="fas fa-hospital me-2 text-warning"></i><span class="fw-semibold">Clínicas</span>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-school me-2 text-warning"></i><span class="fw-semibold">EduForce</span>
+                    <i class="fas fa-school me-2 text-warning"></i><span class="fw-semibold">Eventos</span>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-truck me-2 text-warning"></i><span class="fw-semibold">LogiTrans</span>
+                    <i class="fas fa-building me-2 text-warning"></i><span class="fw-semibold">Consorcios</span>
                 </div>
             </div>
         </div>
@@ -498,52 +525,17 @@
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
-                    <i class="fas fa-tags me-1"></i>Categorías
+                    <i class="fas fa-tags me-1"></i>Potencia
                 </span>
-                <h2 class="display-5 fw-bold mt-3">Encuentra el generador <span class="text-warning">perfecto</span></h2>
-                <p class="text-muted">Selecciona según tu necesidad</p>
+                <h2 class="display-5 fw-bold mt-3">Elegí la potencia que <span class="text-warning">necesitás</span></h2>
+                <p class="text-muted">Seleccioná según tu requerimiento energético</p>
             </div>
             <div class="row g-4 justify-content-center" id="categoryContainer">
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('hogar', this)">
-                        <i class="fas fa-home fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Hogar</h6>
-                        <small class="text-muted">1 modelo</small>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('industrial', this)">
-                        <i class="fas fa-industry fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Industrial</h6>
-                        <small class="text-muted">1 modelo</small>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('portátil', this)">
-                        <i class="fas fa-camping fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Portátil</h6>
-                        <small class="text-muted">1 modelo</small>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('tecnología', this)">
-                        <i class="fas fa-microchip fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Tecnología</h6>
-                        <small class="text-muted">1 modelo</small>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('ecológico', this)">
-                        <i class="fas fa-leaf fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Ecológico</h6>
-                        <small class="text-muted">1 modelo</small>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="category-card text-center" onclick="filtrarPorCategoria('emergencia', this)">
-                        <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
-                        <h6 class="fw-bold mb-0">Emergencia</h6>
-                        <small class="text-muted">1 modelo</small>
+                    <div class="category-card text-center" onclick="filtrarPorCategoria('trifásico', this)">
+                        <i class="fas fa-bolt fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold mb-0">Trifásico</h6>
+                        <small class="text-muted">Todos los equipos</small>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="700">
@@ -562,18 +554,18 @@
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
-                    <i class="fas fa-box me-1"></i>Productos
+                    <i class="fas fa-box me-1"></i>Flota
                 </span>
-                <h2 class="display-5 fw-bold mt-3">Nuestra colección <span class="text-warning">premium</span></h2>
-                <p class="text-muted">Generadores diseñados con la más alta calidad</p>
+                <h2 class="display-5 fw-bold mt-3">Nuestros <span class="text-warning">grupos electrógenos</span></h2>
+                <p class="text-muted">Equipos insonorizados con mantenimiento preventivo al día</p>
             </div>
             <div class="row g-4" id="productsGrid">
                 {% for generador in generadores %}
                 <div class="col-lg-4 col-md-6 product-item" data-categoria="{{ generador.categoria }}" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
                     <div class="card product-card">
                         <div class="position-relative">
-                            <span class="product-badge bg-warning text-dark">{{ generador.categoria|capitalize }}</span>
-                            <img src="/static/images/generador1.jpg" 
+                            <span class="product-badge bg-danger text-white">{{ generador.categoria|capitalize }}</span>
+                            <img src="/static/images/{{ generador.imagen }}" 
                                  class="card-img-top" alt="{{ generador.nombre }}"
                                  onerror="this.src='https://placehold.co/400x300/1a1a2e/f5c518?text={{ generador.nombre }}'">
                             <div class="product-overlay">
@@ -598,8 +590,8 @@
                         </div>
                         <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
                             <div>
-                                <span class="h5 fw-bold text-dark">{{ generador.precio }}</span>
-                                <small class="text-muted d-block">IVA incluido</small>
+                                <span class="h5 fw-bold text-warning">{{ generador.precio }}</span>
+                                <small class="text-muted d-block">Consultar disponibilidad</small>
                             </div>
                             <button class="btn btn-dark btn-sm px-4" onclick="verDetalle({{ generador.id }})">
                                 <i class="fas fa-info-circle me-1"></i>Detalles
@@ -612,15 +604,58 @@
         </div>
     </section>
 
-    <!-- ============ TESTIMONIOS ============ -->
-    <section id="testimonios" class="py-5">
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
+                    <i class="fas fa-concierge-bell me-1"></i>Servicios
+                </span>
+                <h2 class="display-5 fw-bold mt-3">Todo lo que <span class="text-warning">incluye</span> nuestro servicio</h2>
+                <p class="text-muted">Soluciones completas para que no te quedes sin energía</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <i class="fas fa-truck"></i>
+                        <h5 class="fw-bold">Logística Propia</h5>
+                        <p class="text-muted small">Traslado e instalación en el lugar con flota especializada.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="fas fa-headset"></i>
+                        <h5 class="fw-bold">Guardia 24/7</h5>
+                        <p class="text-muted small">Asistencia técnica telefónica y presencial ante cualquier imprevisto.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <i class="fas fa-tools"></i>
+                        <h5 class="fw-bold">Mantenimiento</h5>
+                        <p class="text-muted small">Equipos con service preventivo al día para garantizar confiabilidad.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <i class="fas fa-plug"></i>
+                        <h5 class="fw-bold">Accesorios</h5>
+                        <p class="text-muted small">Alquiler de cables de potencia y tableros de transferencia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- ============ TESTIMONIOS ============ --> 
+    <!-- <section id="testimonios" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold">
                     <i class="fas fa-star me-1"></i>Testimonios
                 </span>
                 <h2 class="display-5 fw-bold mt-3">Lo que dicen <span class="text-warning">nuestros clientes</span></h2>
-                <p class="text-muted">Historias de éxito y satisfacción</p>
+                <p class="text-muted">Experiencias reales de quienes confiaron en EL TATA</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -636,7 +671,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text text-muted fst-italic mb-2">"Excelente generador, muy silencioso y potente. Superó todas mis expectativas."</p>
+                        <p class="card-text text-muted fst-italic mb-2">"El servicio de emergencia es increíble. En menos de 2 horas tenían el generador instalado en mi fábrica."</p>
                         <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>15 enero 2026</small>
                     </div>
                 </div>
@@ -653,7 +688,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text text-muted fst-italic mb-2">"El generador industrial 5000W es una bestia. Rendimiento excepcional."</p>
+                        <p class="card-text text-muted fst-italic mb-2">"Alquilamos el 120 kVA para un evento y fue perfecto. Silencioso y con mucha potencia."</p>
                         <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>3 febrero 2026</small>
                     </div>
                 </div>
@@ -670,31 +705,42 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text text-muted fst-italic mb-2">"La atención al cliente es increíble. Me ayudaron a elegir el generador perfecto."</p>
+                        <p class="card-text text-muted fst-italic mb-2">"La atención es excelente. Juan Diego nos asesoró muy bien y el equipo funcionó impecable."</p>
                         <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>20 febrero 2026</small>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ============ CONTACTO ============ -->
     <section id="contacto" class="py-5" style="background: linear-gradient(165deg, #0a0a1a, #12122a);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center text-white" data-aos="fade-up">
-                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 fw-bold mb-3">
-                        <i class="fas fa-headset me-1"></i>Contacto
+                    <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 fw-bold mb-3">
+                        <i class="fas fa-phone-alt me-1"></i>Emergencia 24/7
                     </span>
-                    <h2 class="display-5 fw-bold mb-3">¿Listo para <span class="text-warning">impulsar</span> tu proyecto?</h2>
-                    <p class="text-white-50 mb-4">Habla con nuestros expertos y encuentra la solución energética perfecta para ti.</p>
+                    <h2 class="display-5 fw-bold mb-3">¿Corte de luz? <span class="text-warning">Llamanos ya</span></h2>
+                    <p class="text-white-50 mb-4">Respondemos en minutos. Asistencia técnica inmediata las 24 horas.</p>
                     <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-success btn-lg px-5">
+                        <a href="tel:+541153392457" class="btn btn-danger btn-lg px-5">
+                            <i class="fas fa-phone me-2"></i>Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/541153392457" target="_blank" class="btn btn-success btn-lg px-5">
                             <i class="fab fa-whatsapp me-2"></i>WhatsApp
                         </a>
-                        <a href="mailto:info@genpower.com" class="btn btn-outline-light btn-lg px-5">
+                        <a href="mailto:eltata@emergencias.com" class="btn btn-outline-light btn-lg px-5">
                             <i class="fas fa-envelope me-2"></i>Email
                         </a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-white-50 small">
+                            <i class="fas fa-map-marker-alt me-2"></i>Buenos Aires, Argentina
+                        </p>
+                        <p class="text-white-50 small">
+                            <i class="fas fa-phone me-2"></i>{{ telefono }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -707,10 +753,11 @@
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <a class="navbar-brand" href="#">
-                        <i class="fas fa-bolt text-warning"></i>
-                        <span class="fw-bold text-white">GenPower</span>
+                        <i class="fas fa-bolt text-danger"></i>
+                        <span class="fw-bold text-white">EL TATA</span>
+                        <small class="text-muted d-block" style="font-size: 0.6rem;">Emergencias Eléctricas</small>
                     </a>
-                    <p class="text-muted small mb-0 mt-2">© {{ año }} GenPower. Todos los derechos reservados.</p>
+                    <p class="text-muted small mb-0 mt-2">© {{ año }} EL TATA - Emergencias Eléctricas. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <a href="#" class="text-muted me-3"><i class="fab fa-facebook"></i></a>
@@ -727,7 +774,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="modalTitle">Detalles del Producto</h5>
+                    <h5 class="modal-title fw-bold" id="modalTitle">Detalles del Equipo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="modalContent">
@@ -739,8 +786,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-warning-custom fw-bold" onclick="window.location.href='#contacto'">
-                        <i class="fas fa-arrow-right me-2"></i>Solicitar Cotización
+                    <button class="btn btn-danger-custom fw-bold" onclick="window.location.href='#contacto'">
+                        <i class="fas fa-phone me-2"></i>Solicitar Presupuesto
                     </button>
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
@@ -828,7 +875,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="bg-light rounded p-3 text-center">
-                                    <img src="/static/images/${data.imagen || 'generator-placeholder.jpg'}" 
+                                    <img src="/static/images/${data.imagen || 'generator-placeholder.webp'}" 
                                          class="img-fluid rounded" alt="${data.nombre}"
                                          onerror="this.src='https://placehold.co/300x300/1a1a2e/f5c518?text=${data.nombre}'">
                                 </div>
@@ -838,9 +885,9 @@
                                 <p class="text-muted">${data.descripcion}</p>
                                 <div class="mb-3">
                                     <span class="h3 text-warning fw-bold">${data.precio}</span>
-                                    <small class="text-muted d-block">IVA incluido</small>
+                                    <small class="text-muted d-block">Consultar disponibilidad</small>
                                 </div>
-                                <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 mb-3">
+                                <span class="badge bg-danger text-white px-3 py-2 mb-3">
                                     <i class="fas fa-tag me-1"></i>${data.categoria}
                                 </span>
                                 <ul class="list-unstyled">
@@ -859,7 +906,6 @@
 
         // ============ INICIALIZAR ============
         document.addEventListener('DOMContentLoaded', function() {
-            // Contadores
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import jinja2
 
-app = FastAPI(title="GenPower", description="Energía que impulsa tu mundo")
+app = FastAPI(title="Emergencias Eléctricas EL TATA")
 
 # Servir archivos estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -16,67 +16,106 @@ env = jinja2.Environment(
     autoescape=jinja2.select_autoescape(['html', 'xml'])
 )
 
-# Datos de generadores con imágenes
+# ============ DATOS DE GENERADORES PARA ALQUILER ============
 generadores = [
     {
-        "id": 1, 
-        "nombre": "Generador 3000W", 
-        "descripcion": "Potencia silenciosa para tu hogar con tecnología de última generación",
-        "precio": "$1,299", 
-        "categoria": "hogar",
-        "imagen": "generator-3000w.jpg",
-        "rating": 4.8,
-        "caracteristicas": ["Motor 4 tiempos eficiente", "Nivel de ruido 58dB", "Autonomía 10 horas", "Arranque eléctrico"]
-    },
-    {
-        "id": 2, 
-        "nombre": "Generador 5000W", 
-        "descripcion": "Potencia industrial para proyectos exigentes y construcción",
-        "precio": "$2,499", 
-        "categoria": "industrial",
-        "imagen": "generator-5000w.jpg",
+        "id": 1,
+        "nombre": "Grupo Electrógeno 80 kVA",
+        "descripcion": "Potencia ideal para comercios, eventos medianos y edificios de departamentos.",
+        "precio": "A convenir",
+        "categoria": "trifásico",
+        "imagen": "generador3.webp",
         "rating": 4.9,
-        "caracteristicas": ["Motor diésel turbo", "Alta eficiencia energética", "Arranque eléctrico", "Autonomía 24 horas"]
+        "caracteristicas": [
+            "Motor de alta eficiencia",
+            "Cabina insonorizada",
+            "Tablero digital con monitoreo",
+            "Autonomía extendida"
+        ]
     },
     {
-        "id": 3, 
-        "nombre": "Generador Portátil 2000W", 
-        "descripcion": "Ligero y potente para camping, viajes y emergencias",
-        "precio": "$899", 
-        "categoria": "portátil",
-        "imagen": "generator-portatil.jpg",
+        "id": 2,
+        "nombre": "Grupo Electrógeno 120 kVA",
+        "descripcion": "Equilibrio perfecto entre potencia y eficiencia para industrias y eventos grandes.",
+        "precio": "A convenir",
+        "categoria": "trifásico",
+        "imagen": "generador4.webp",
+        "rating": 4.9,
+        "caracteristicas": [
+            "Motor diésel de alta eficiencia",
+            "Cabina insonorizada",
+            "Monitoreo digital avanzado",
+            "Tanque de combustible de gran capacidad"
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Grupo Electrógeno 150 kVA",
+        "descripcion": "Máxima potencia para obras, supermercados y centros comerciales.",
+        "precio": "A convenir",
+        "categoria": "trifásico",
+        "imagen": "generador5.webp",
+        "rating": 4.8,
+        "caracteristicas": [
+            "Motor de alto rendimiento",
+            "Cabina insonorizada premium",
+            "Sistema de monitoreo en tiempo real",
+            "Arranque automático"
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Grupo Electrógeno 180 kVA",
+        "descripcion": "Potencia industrial para proyectos exigentes y emergencias críticas.",
+        "precio": "A convenir",
+        "categoria": "trifásico",
+        "imagen": "generador6.webp",
+        "rating": 4.9,
+        "caracteristicas": [
+            "Motor de última generación",
+            "Cabina insonorizada de alto nivel",
+            "Tablero digital con telemetría",
+            "Autonomía para trabajo continuo"
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Grupo Electrógeno 100 kVA",
+        "descripcion": "Versatilidad y confianza para eventos corporativos y catering.",
+        "precio": "A convenir",
+        "categoria": "trifásico",
+        "imagen": "generador7.webp",
         "rating": 4.7,
-        "caracteristicas": ["Peso 22kg", "Motor 4 tiempos", "Ultra silencioso", "Ideal para viajes"]
+        "caracteristicas": [
+            "Motor eficiente",
+            "Bajo nivel de ruido",
+            "Fácil instalación",
+            "Monitoreo básico"
+        ]
+    }
+]
+
+# ============ SERVICIOS ADICIONALES ============
+servicios = [
+    {
+        "icono": "fa-truck",
+        "titulo": "Logística Propia",
+        "descripcion": "Traslado e instalación en el lugar con flota especializada."
     },
     {
-        "id": 4, 
-        "nombre": "Generador Eco 1500W", 
-        "descripcion": "Tecnología ecológica con mínimo consumo de combustible",
-        "precio": "$1,099", 
-        "categoria": "ecológico",
-        "imagen": "generator-eco.jpg",
-        "rating": 4.6,
-        "caracteristicas": ["Motor eficiente", "Bajas emisiones CO2", "Larga duración", "Silencioso"]
+        "icono": "fa-headset",
+        "titulo": "Guardia 24/7",
+        "descripcion": "Asistencia técnica telefónica y presencial ante cualquier imprevisto."
     },
     {
-        "id": 5, 
-        "nombre": "Generador Tech 4000W", 
-        "descripcion": "Conectividad WiFi y control remoto desde tu smartphone",
-        "precio": "$1,899", 
-        "categoria": "tecnología",
-        "imagen": "generator-tech.jpg",
-        "rating": 4.9,
-        "caracteristicas": ["Control remoto WiFi", "App móvil", "Monitoreo en tiempo real", "Auto-arranque"]
+        "icono": "fa-tools",
+        "titulo": "Mantenimiento Preventivo",
+        "descripcion": "Equipos con service preventivo al día para garantizar confiabilidad."
     },
     {
-        "id": 6, 
-        "nombre": "Generador Emergencia 2500W", 
-        "descripcion": "Diseñado para situaciones críticas con arranque inmediato",
-        "precio": "$1,499", 
-        "categoria": "emergencia",
-        "imagen": "generator-emergencia.jpg",
-        "rating": 4.8,
-        "caracteristicas": ["Arranque inmediato", "Batería de respaldo", "Sistema de seguridad", "Autonomía 8h"]
+        "icono": "fa-plug",
+        "titulo": "Cables y Accesorios",
+        "descripcion": "Alquiler de cables de potencia y tableros de transferencia."
     }
 ]
 
@@ -86,7 +125,9 @@ async def home(request: Request):
         template = env.get_template("index.html")
         content = template.render(
             generadores=generadores,
-            empresa="GenPower",
+            servicios=servicios,
+            empresa="Emergencias Eléctricas EL TATA",
+            telefono="+54 11 5339-2457",
             año="2026"
         )
         return HTMLResponse(content=content)
@@ -99,7 +140,7 @@ async def home(request: Request):
             <h1 style="color: #d32f2f;">Error al cargar la página</h1>
             <div style="background: white; padding: 20px; border-radius: 8px;">
                 <p><strong>Error:</strong> {str(e)}</p>
-                <p><strong>Solución:</strong> Verifica que la carpeta <code>templates</code> existe y contiene <code>index.html</code></p>
+                <p><strong>Solución:</strong> Verifica que la carpeta <code>templates</code> contiene <code>index.html</code></p>
             </div>
         </body>
         </html>
