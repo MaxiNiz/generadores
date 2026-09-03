@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, Response 
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import jinja2
+
 
 app = FastAPI(title="Emergencias Eléctricas EL TATA")
 
@@ -159,3 +161,11 @@ async def filtrar_generadores(categoria: str):
         return generadores
     resultado = [g for g in generadores if g["categoria"] == categoria]
     return resultado
+
+@app.head("/")
+async def head_root():
+    return Response(content="", status_code=200)
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok", "service": "EL TATA"}
